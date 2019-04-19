@@ -1,0 +1,368 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: parksmap-katacoda
+      openshift.io/deployment.name: parksmap-katacoda-1
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/scc: restricted
+    creationTimestamp: 2019-04-19T08:28:35Z
+    generateName: parksmap-katacoda-1-
+    labels:
+      app: parksmap-katacoda
+      deployment: parksmap-katacoda-1
+      deploymentconfig: parksmap-katacoda
+    name: parksmap-katacoda-1-5x56f
+    namespace: parksmap01
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicationController
+      name: parksmap-katacoda-1
+      uid: 1ec6a1c2-627d-11e9-aa12-0afbfe3ccb12
+    resourceVersion: "102262"
+    selfLink: /api/v1/namespaces/parksmap01/pods/parksmap-katacoda-1-5x56f
+    uid: 1f84a51f-627d-11e9-aa12-0afbfe3ccb12
+  spec:
+    containers:
+    - image: openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+      imagePullPolicy: IfNotPresent
+      name: parksmap-katacoda
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      securityContext:
+        capabilities:
+          drop:
+          - KILL
+          - MKNOD
+          - SETGID
+          - SETUID
+        runAsUser: 1000220000
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-54pwh
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    imagePullSecrets:
+    - name: default-dockercfg-gppvl
+    nodeName: localhost
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000220000
+      seLinuxOptions:
+        level: s0:c15,c5
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    volumes:
+    - name: default-token-54pwh
+      secret:
+        defaultMode: 420
+        secretName: default-token-54pwh
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: 2019-04-19T08:28:35Z
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: 2019-04-19T08:28:36Z
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: null
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: 2019-04-19T08:28:35Z
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://016db97fffa50004c5e2be5991f4b22a244c6a5b0d2ff363e34d9dd880eb6638
+      image: sha256:7722b7959da62242a3cb12f55439e5abcabfd2c7a82eab55a23f729784ee82a4
+      imageID: docker-pullable://docker.io/openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+      lastState: {}
+      name: parksmap-katacoda
+      ready: true
+      restartCount: 0
+      state:
+        running:
+          startedAt: 2019-04-19T08:28:36Z
+    hostIP: 172.42.32.23
+    phase: Running
+    podIP: 172.17.0.14
+    qosClass: BestEffort
+    startTime: 2019-04-19T08:28:35Z
+- apiVersion: v1
+  kind: ReplicationController
+  metadata:
+    annotations:
+      openshift.io/deployer-pod.completed-at: 2019-04-19 08:28:37 +0000 UTC
+      openshift.io/deployer-pod.created-at: 2019-04-19 08:28:33 +0000 UTC
+      openshift.io/deployer-pod.name: parksmap-katacoda-1-deploy
+      openshift.io/deployment-config.latest-version: "1"
+      openshift.io/deployment-config.name: parksmap-katacoda
+      openshift.io/deployment.phase: Complete
+      openshift.io/deployment.replicas: "1"
+      openshift.io/deployment.status-reason: config change
+      openshift.io/encoded-deployment-config: |
+        {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"parksmap-katacoda","namespace":"parksmap01","selfLink":"/apis/apps.openshift.io/v1/namespaces/parksmap01/deploymentconfigs/parksmap-katacoda","uid":"1d9758bd-627d-11e9-add1-0afbfe3ccb12","resourceVersion":"102219","generation":2,"creationTimestamp":"2019-04-19T08:28:31Z","labels":{"app":"parksmap-katacoda"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ConfigChange"},{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["parksmap-katacoda"],"from":{"kind":"ImageStreamTag","namespace":"parksmap01","name":"parksmap-katacoda:1.0.0"},"lastTriggeredImage":"openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0"}}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"app":"parksmap-katacoda","deploymentconfig":"parksmap-katacoda"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"parksmap-katacoda","deploymentconfig":"parksmap-katacoda"},"annotations":{"openshift.io/generated-by":"OpenShiftNewApp"}},"spec":{"containers":[{"name":"parksmap-katacoda","image":"openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"IfNotPresent"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-04-19T08:28:32Z","lastTransitionTime":"2019-04-19T08:28:32Z","message":"Deployment config does not have minimum availability."}]}}
+    creationTimestamp: 2019-04-19T08:28:33Z
+    generation: 2
+    labels:
+      app: parksmap-katacoda
+      openshift.io/deployment-config.name: parksmap-katacoda
+    name: parksmap-katacoda-1
+    namespace: parksmap01
+    ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DeploymentConfig
+      name: parksmap-katacoda
+      uid: 1d9758bd-627d-11e9-add1-0afbfe3ccb12
+    resourceVersion: "102270"
+    selfLink: /api/v1/namespaces/parksmap01/replicationcontrollers/parksmap-katacoda-1
+    uid: 1ec6a1c2-627d-11e9-aa12-0afbfe3ccb12
+  spec:
+    replicas: 1
+    selector:
+      app: parksmap-katacoda
+      deployment: parksmap-katacoda-1
+      deploymentconfig: parksmap-katacoda
+    template:
+      metadata:
+        annotations:
+          openshift.io/deployment-config.latest-version: "1"
+          openshift.io/deployment-config.name: parksmap-katacoda
+          openshift.io/deployment.name: parksmap-katacoda-1
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: parksmap-katacoda
+          deployment: parksmap-katacoda-1
+          deploymentconfig: parksmap-katacoda
+      spec:
+        containers:
+        - image: openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+          imagePullPolicy: IfNotPresent
+          name: parksmap-katacoda
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: 2019-04-19T08:28:31Z
+    labels:
+      app: parksmap-katacoda
+      web: "true"
+    name: parksmap-katacoda
+    namespace: parksmap01
+    resourceVersion: "113604"
+    selfLink: /api/v1/namespaces/parksmap01/services/parksmap-katacoda
+    uid: 1d9893ab-627d-11e9-aa12-0afbfe3ccb12
+  spec:
+    clusterIP: 172.30.239.87
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: parksmap-katacoda
+      deploymentconfig: parksmap-katacoda
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: 2019-04-19T08:28:31Z
+    generation: 2
+    labels:
+      app: parksmap-katacoda
+    name: parksmap-katacoda
+    namespace: parksmap01
+    resourceVersion: "102273"
+    selfLink: /apis/apps.openshift.io/v1/namespaces/parksmap01/deploymentconfigs/parksmap-katacoda
+    uid: 1d9758bd-627d-11e9-add1-0afbfe3ccb12
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      app: parksmap-katacoda
+      deploymentconfig: parksmap-katacoda
+    strategy:
+      activeDeadlineSeconds: 21600
+      resources: {}
+      rollingParams:
+        intervalSeconds: 1
+        maxSurge: 25%
+        maxUnavailable: 25%
+        timeoutSeconds: 600
+        updatePeriodSeconds: 1
+      type: Rolling
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          app: parksmap-katacoda
+          deploymentconfig: parksmap-katacoda
+      spec:
+        containers:
+        - image: openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+          imagePullPolicy: IfNotPresent
+          name: parksmap-katacoda
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - parksmap-katacoda
+        from:
+          kind: ImageStreamTag
+          name: parksmap-katacoda:1.0.0
+          namespace: parksmap01
+        lastTriggeredImage: openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+      type: ImageChange
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: 2019-04-19T08:28:37Z
+      lastUpdateTime: 2019-04-19T08:28:37Z
+      message: Deployment config has minimum availability.
+      status: "True"
+      type: Available
+    - lastTransitionTime: 2019-04-19T08:28:38Z
+      lastUpdateTime: 2019-04-19T08:28:38Z
+      message: replication controller "parksmap-katacoda-1" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: "True"
+      type: Progressing
+    details:
+      causes:
+      - type: ConfigChange
+      message: config change
+    latestVersion: 1
+    observedGeneration: 2
+    readyReplicas: 1
+    replicas: 1
+    unavailableReplicas: 0
+    updatedReplicas: 1
+- apiVersion: image.openshift.io/v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+      openshift.io/image.dockerRepositoryCheck: 2019-04-19T08:28:33Z
+    creationTimestamp: 2019-04-19T08:28:31Z
+    generation: 2
+    labels:
+      app: parksmap-katacoda
+    name: parksmap-katacoda
+    namespace: parksmap01
+    resourceVersion: "102217"
+    selfLink: /apis/image.openshift.io/v1/namespaces/parksmap01/imagestreams/parksmap-katacoda
+    uid: 1d93293c-627d-11e9-add1-0afbfe3ccb12
+  spec:
+    lookupPolicy:
+      local: false
+    tags:
+    - annotations:
+        openshift.io/imported-from: openshiftroadshow/parksmap-katacoda:1.0.0
+      from:
+        kind: DockerImage
+        name: openshiftroadshow/parksmap-katacoda:1.0.0
+      generation: 2
+      importPolicy: {}
+      name: 1.0.0
+      referencePolicy:
+        type: Source
+  status:
+    dockerImageRepository: 172.30.1.1:5000/parksmap01/parksmap-katacoda
+    tags:
+    - items:
+      - created: 2019-04-19T08:28:33Z
+        dockerImageReference: openshiftroadshow/parksmap-katacoda@sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+        generation: 2
+        image: sha256:adf4ce84b52e10c6e4ef8a9d71f99e9f1acaf16b89a4689c0ba84f35a1c37bf0
+      tag: 1.0.0
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    annotations:
+      openshift.io/host.generated: "true"
+    creationTimestamp: 2019-04-19T08:29:15Z
+    labels:
+      app: parksmap-katacoda
+    name: parksmap-katacoda
+    namespace: parksmap01
+    resourceVersion: "102427"
+    selfLink: /apis/route.openshift.io/v1/namespaces/parksmap01/routes/parksmap-katacoda
+    uid: 3782b23e-627d-11e9-add1-0afbfe3ccb12
+  spec:
+    host: parksmap-katacoda-parksmap01.127.0.0.1.nip.io
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: parksmap-katacoda
+      weight: 100
+    wildcardPolicy: None
+  status:
+    ingress:
+    - conditions:
+      - lastTransitionTime: 2019-04-19T08:29:15Z
+        status: "True"
+        type: Admitted
+      host: parksmap-katacoda-parksmap01.127.0.0.1.nip.io
+      routerName: router
+      wildcardPolicy: None
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
